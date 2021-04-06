@@ -1,0 +1,290 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "daskalos-lite": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/daskalos-lite",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "daskalos-lite:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "daskalos-lite:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "daskalos-lite:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "daskalos-lite:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "daskalos-lite:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "daskalos-material": {
+      "projectType": "library",
+      "root": "projects/daskalos-material",
+      "sourceRoot": "projects/daskalos-material/src",
+      "prefix": "dsk",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/daskalos-material/tsconfig.lib.json",
+            "project": "projects/daskalos-material/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/daskalos-material/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/daskalos-material/src/test.ts",
+            "tsConfig": "projects/daskalos-material/tsconfig.spec.json",
+            "karmaConfig": "projects/daskalos-material/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/daskalos-material/tsconfig.lib.json",
+              "projects/daskalos-material/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "daskalos-core": {
+      "projectType": "library",
+      "root": "projects/daskalos-core",
+      "sourceRoot": "projects/daskalos-core/src",
+      "prefix": "dsk",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/daskalos-core/tsconfig.lib.json",
+            "project": "projects/daskalos-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/daskalos-core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/daskalos-core/src/test.ts",
+            "tsConfig": "projects/daskalos-core/tsconfig.spec.json",
+            "karmaConfig": "projects/daskalos-core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/daskalos-core/tsconfig.lib.json",
+              "projects/daskalos-core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "daskalos-api": {
+      "projectType": "library",
+      "root": "projects/daskalos-api",
+      "sourceRoot": "projects/daskalos-api/src",
+      "prefix": "dsk",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/daskalos-api/tsconfig.lib.json",
+            "project": "projects/daskalos-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/daskalos-api/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/daskalos-api/src/test.ts",
+            "tsConfig": "projects/daskalos-api/tsconfig.spec.json",
+            "karmaConfig": "projects/daskalos-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/daskalos-api/tsconfig.lib.json",
+              "projects/daskalos-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "daskalos-ui": {
+      "projectType": "library",
+      "root": "projects/daskalos-ui",
+      "sourceRoot": "projects/daskalos-ui/src",
+      "prefix": "dsk",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/daskalos-ui/tsconfig.lib.json",
+            "project": "projects/daskalos-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/daskalos-ui/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/daskalos-ui/src/test.ts",
+            "tsConfig": "projects/daskalos-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/daskalos-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/daskalos-ui/tsconfig.lib.json",
+              "projects/daskalos-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "daskalos-lite"
+}

@@ -1,0 +1,15 @@
+<div *ngIf="!completed">
+  <div class="flow-label">{{ flow?.label }}</div>
+  <daskalos-flow-step
+    [step]="step"
+    [canStepBack]="canStepBack"
+    (stepBack)="onStepBack($event)"
+    (stepForward)="onStepForward($event)"
+    (stop)="onStop($event)"
+  ></daskalos-flow-step>
+</div>
+<daskalos-flow-end
+  *ngIf="completed"
+  [summary]="summary"
+  (repeat)="start()"
+></daskalos-flow-end>
