@@ -8,6 +8,7 @@
     - [Step with Branching](#step-with-branching)
     - [Multiple Answers Step](#multiple-answers-step)
   - [Infrastructure](#infrastructure)
+    - [Docker](#docker)
   - [History](#history)
 
 A toy web app born for our 2020 Summer Camp, upgraded to the newest Angular version and simplified to be used as a learner's sample.
@@ -191,6 +192,18 @@ ng build --prod --base-href /apps/daskalos2/
 ```
 
 In this example, the subpath is `apps/daskalos2`.
+
+### Docker
+
+Build Docker image:
+
+1. npm run build-lib
+2. ng build
+3. generate the image:
+
+```bash
+docker build . -t vedph2020/daskalos-summer-22:0.0.1 -t vedph2020/daskalos-summer-22:latest
+```
 
 ## History
 
