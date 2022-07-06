@@ -2,7 +2,7 @@
   <!-- check -->
   <td>
     <mat-checkbox formControlName="checked" value="choice?.number">{{
-      choice.label
+      choice?.label
     }}</mat-checkbox>
   </td>
   <!-- <td *ngIf="!multiple">
@@ -18,8 +18,12 @@
         maxlength="1000"
         placeholder="answer"
       ></textarea>
-      <mat-error *ngIf="content.hasError('content') && content.touched">please type an answer</mat-error>
-      <mat-error *ngIf="content.hasError('pattern') && content.touched">invalid answer</mat-error>
+      <mat-error *ngIf="content.hasError('content') && content.touched"
+        >please type an answer</mat-error
+      >
+      <mat-error *ngIf="content.hasError('pattern') && content.touched"
+        >invalid answer</mat-error
+      >
     </mat-form-field>
   </td>
 </tr>

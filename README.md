@@ -1,5 +1,15 @@
 # Daskalos Lite
 
+- [Daskalos Lite](#daskalos-lite)
+  - [Overview](#overview)
+  - [Main Features](#main-features)
+  - [Sample](#sample)
+    - [Skeleton](#skeleton)
+    - [Step with Branching](#step-with-branching)
+    - [Multiple Answers Step](#multiple-answers-step)
+  - [Infrastructure](#infrastructure)
+  - [History](#history)
+
 A toy web app born for our 2020 Summer Camp, upgraded to the newest Angular version and simplified to be used as a learner's sample.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
@@ -62,6 +72,8 @@ As a sample, consider the demo quiz.
 
 Here, we start with a single branch including 4 steps. The first just introduces the quiz, and has no questions. Step 4 has two answers: according to the user's pick, the quiz flows into a different branch. In this minimalist sample, we just have 2 other steps for each branch, up to the quiz end.
 
+### Skeleton
+
 Let us dissect the corresponding JSON code. This is the main structure: a flow object with its properties, and an array with any number of steps:
 
 ```json
@@ -76,6 +88,8 @@ Let us dissect the corresponding JSON code. This is the main structure: a flow o
   "steps": []
 }
 ```
+
+### Step with Branching
 
 Below we find step 2: it has a number, a label, an HTML content with an image and a text, and a prompt with a single answer to be selected among 3 choices. Each of these choices has its label and score, and its target step number.
 
@@ -117,6 +131,8 @@ Also, this is a *time-limited* question, where users have 30 seconds to select a
   ]
 },
 ```
+
+### Multiple Answers Step
 
 A *multiple-answers step* is sampled below. Here, the maximum count of allowed choices is 4 (rather than the default value of 1), and each correct choice contributes with a fraction (here 1/4, i.e. 0.25) to the total score of this step. The target step number equal to 0 means that this is the last step in its branch.
 
@@ -175,3 +191,7 @@ ng build --prod --base-href /apps/daskalos2/
 ```
 
 In this example, the subpath is `apps/daskalos2`.
+
+## History
+
+- 2022-07-06: upgraded to Angular 14 and refactored forms into typed.

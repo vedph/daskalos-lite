@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{ summary.label }}</mat-card-title>
+    <mat-card-title>{{ summary!.label }}</mat-card-title>
     <mat-card-subtitle [ngClass]="success ? 'badge-success' : 'badge-error'">
       {{ success ? "SUCCESS" : "FAILURE" }}
     </mat-card-subtitle>
@@ -11,9 +11,9 @@
       <span [ngClass]="success ? 'badge-success' : 'badge-error'">{{
         score
       }}</span
-      >. The minimum score was {{ summary.minScore }}.
+      >. The minimum score was {{ summary!.minScore }}.
     </p>
-    <div *ngFor="let step of summary.steps">
+    <div *ngFor="let step of summary!.steps">
       <h3>[{{ step.number }}] {{ step.label }}</h3>
       <p class="prompt">{{ step.prompt }}</p>
       <div *ngIf="!step.isFree">

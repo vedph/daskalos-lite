@@ -22,15 +22,15 @@ export class FlowChoiceComponent implements OnInit {
   @Output() checkedChange: EventEmitter<FlowChoice>;
 
   // form
-  public checked: FormControl;
-  public content: FormControl;
+  public checked: FormControl<boolean>;
+  public content: FormControl<string | null>;
   public choiceGroup: FormGroup;
 
   constructor(formBuilder: FormBuilder) {
     this.multiple = false;
     this.checkedChange = new EventEmitter<FlowChoice>();
     // form
-    this.checked = formBuilder.control(false);
+    this.checked = formBuilder.control(false, { nonNullable: true });
     this.content = formBuilder.control(null);
     this.choiceGroup = formBuilder.group({
       checked: this.checked,
