@@ -207,4 +207,5 @@ docker build . -t vedph2020/daskalos-summer-22:0.0.1 -t vedph2020/daskalos-summe
 
 ## History
 
+- 2022-11-05: updated Angular.
 - 2022-07-06: upgraded to Angular 14 and refactored forms into typed.
